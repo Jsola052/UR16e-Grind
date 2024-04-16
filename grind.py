@@ -142,6 +142,8 @@ def grindSurface(ur_control, acc, vel, numPasses, points, tool_changer, tool):
     getGrinder(ur_control.robot, tool_changer, unlock, lock, grinder_payload, grinder_tcp, grinder_cog)
     ur_control.robot.set_payload(grinder_payload, grinder_cog)
     ur_control.robot.set_tcp(grinder_tcp)
+    linearPosition = ur_control.robot.getl() 
+    ur_control.robot.movel(linearPosition[:3]+[0,0,0], 0.2, 0.2)
     PASSES = 2
     count = 0
     lowerDistance = 0.005
