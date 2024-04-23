@@ -26,11 +26,11 @@ def home(robot, acc, vel):
 
 # Convert a rotation matrix to a rotation vector
 def getGrinder(robot, tool_changer, unlock, lock, grinder_payload, grinder_tcp, grinder_cog):
-    home(robot)
+    home(robot, 0.5, 0.5)
     robot.set_tcp((0,0,0,0,0,0))
     tool_changer.write(unlock)
-    robot.movej((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.7, 0.7)
-    robot.movel((0.42343, 0.31155, 0.24508, 0, 3.143, 0.000), 0.7, 0.7)
+    robot.movej((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.3, 0.3)
+    robot.movel((0.42343, 0.31155, 0.24508, 0, 3.143, 0.000), 0.3, 0.3)
     robot.movel((0.42343, 0.31155, 0.22222, 0, 3.143, 0.000), 0.1, 0.1)
     time.sleep(0.2)  
     tool_changer.write(lock)
@@ -38,17 +38,17 @@ def getGrinder(robot, tool_changer, unlock, lock, grinder_payload, grinder_tcp, 
     robot.set_payload(grinder_payload, grinder_cog)
     time.sleep(0.2)
     robot.movel((0.42343, 0.31155, 0.24508, 0, 3.143, 0.000), 0.2, 0.2)
-    robot.movel((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.7, 0.7)
-    home(robot)
+    robot.movel((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.3, 0.3)
+    home(robot, 0.5, 0.5)
     time.sleep(0.2)
     robot.set_tcp(grinder_tcp)
     time.sleep(0.2)
     
 def returnGrinder(robot, tool_changer, unlock, normal_payload, normal_tcp):
-    home(robot)
+    home(robot, 0.5, 0.5)
     robot.set_tcp(normal_tcp)
-    robot.movel((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.7, 0.7)
-    robot.movel((0.42343, 0.31155, 0.24508, 0, 3.143, 0.000), 0.7, 0.7)
+    robot.movel((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.3, 0.3)
+    robot.movel((0.42343, 0.31155, 0.24508, 0, 3.143, 0.000), 0.3, 0.3)
     robot.movel((0.42343, 0.31155, 0.22222, 0, 3.143, 0.000), 0.1, 0.1) 
     time.sleep(0.2)
     tool_changer.write(unlock)
@@ -56,8 +56,8 @@ def returnGrinder(robot, tool_changer, unlock, normal_payload, normal_tcp):
     robot.set_payload(normal_payload)
     time.sleep(0.2)
     robot.movel((0.42343, 0.31155, 0.24508, 0, 3.143, 0.000), 0.2, 0.2)
-    robot.movel((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.7, 0.7)
-    home(robot)
+    robot.movel((0.42343, 0.31155, 0.45083, 0, 3.143, 0.000), 0.3, 0.3)
+    home(robot, 0.5, 0.5)
 
 # Calculate the orientation for grinding based on the points
 def vector_to_euler_angles(target_normal):
